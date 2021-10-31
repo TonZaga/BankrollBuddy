@@ -23,17 +23,8 @@ namespace BankrollBuddy
 
 ";
             Console.WriteLine(title);
-            Gather();
+            Gather.getInfo();
+            Console.ReadLine();
         }
-
-        public static void Gather()
-        {
-            Console.WriteLine("What is your first name?");
-            var firstName = Console.ReadLine();
-            Console.WriteLine("What is your starting bankroll?");
-            var starting = Console.ReadLine();
-        }
-
     }
-
 }

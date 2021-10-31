@@ -1,1 +1,1 @@
-# MyBankrollBuddy
+# BankrollBuddy

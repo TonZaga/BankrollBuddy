@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankrollBuddy", "BankrollBuddy\BankrollBuddy.csproj", "{21B677BD-C51B-452A-B0A0-0512D8B24015}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankrollBuddy", "BankrollBuddy.csproj", "{28D11A7A-75FB-4E02-9DF3-88881BDF49C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{21B677BD-C51B-452A-B0A0-0512D8B24015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21B677BD-C51B-452A-B0A0-0512D8B24015}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21B677BD-C51B-452A-B0A0-0512D8B24015}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21B677BD-C51B-452A-B0A0-0512D8B24015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28D11A7A-75FB-4E02-9DF3-88881BDF49C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28D11A7A-75FB-4E02-9DF3-88881BDF49C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28D11A7A-75FB-4E02-9DF3-88881BDF49C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28D11A7A-75FB-4E02-9DF3-88881BDF49C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F68FA0A3-4244-4F8C-A6FE-DFF3A64F2C98}
+		SolutionGuid = {CD6A343F-2B85-43A9-B55F-629174DFD836}
 	EndGlobalSection
 EndGlobal

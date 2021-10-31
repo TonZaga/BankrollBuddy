@@ -23,9 +23,17 @@ namespace BankrollBuddy
 
 ";
             Console.WriteLine(title);
-            Console.WriteLine("Your friendly gambling bankroll tracker");
-            Console.WriteLine("What is your name? ");
-            var name = Console.ReadLine();
+            Gather();
         }
+
+        public static void Gather()
+        {
+            Console.WriteLine("What is your first name?");
+            var firstName = Console.ReadLine();
+            Console.WriteLine("What is your starting bankroll?");
+            var starting = Console.ReadLine();
+        }
+
     }
+
 }

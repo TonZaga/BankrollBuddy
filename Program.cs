@@ -1,20 +1,20 @@
 ﻿using System;
-using System.IO;
 using System.Runtime.InteropServices;
+using System.IO;
+using System.Globalization;
+using CsvHelper;
+using BankrollBuddy;
 
 namespace BankrollBuddy
 {
-    class Program
+    public class Program
     {
-
         [DllImport("kernel32.dll", ExactSpelling = true)]
-
         private static extern IntPtr GetConsoleWindow();
 
         private static IntPtr ThisConsole = GetConsoleWindow();
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-
         private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         private const int HIDE = 0;
@@ -24,11 +24,10 @@ namespace BankrollBuddy
         private const int MINIMIZE = 6;
 
         private const int RESTORE = 9;
-
         public static void Main(string[] args)
         {
             ShowWindow(ThisConsole, MAXIMIZE);
-            
+
             string title = @"
 
 
@@ -46,48 +45,27 @@ namespace BankrollBuddy
 
 ";
             Console.WriteLine(title);
-            GetInfo();
             MainMenu();
-            Console.ReadLine();
         }
 
-        public static string firstName { get; set; }
-
-        public static int bankroll { get; set; }
-
-        public static void GetInfo()
-        {
-            Console.WriteLine("What is your first name?");
-            firstName = Console.ReadLine();
-            Console.WriteLine("What is your starting bankroll?");
-            var starting = Console.ReadLine();
-            try
-            {
-                bankroll = Convert.ToInt32(starting);
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Amount that you entered is not valid.  Please try again.");
-                GetInfo();
-            }
-        }
         public static bool MainMenu()
         {
-            Console.WriteLine("\r\nBankroll Buddy menu");
-            Console.WriteLine($"Hello, {firstName}. Your bankroll is set to ${bankroll}");
+            //Console.WriteLine($"\r\nWelcome to Bankroll Buddy, {Profile.firstName}. Your bankroll is set to ${Profile.bankroll}");
+            Console.WriteLine("\r\nTrack your poker sessions with Bankroll Buddy!");
             Console.WriteLine("\r\nChoose an option:");
             Console.WriteLine("1) Enter a session");
             Console.WriteLine("2) Recommended stake based on bankroll");
+            //current bankroll / 100 = SB & / 200 = BB
             Console.WriteLine("3) Exit");
             Console.Write("\r\nSelect an option: ");
 
             switch (Console.ReadLine())
             {
                 case "1":
-                    //ReverseString();
+                    SessionInfo.GetSession();
                     return true;
                 case "2":
-                    //RemoveWhitespace();
+                    //RecommendedStake();
                     return true;
                 case "3":
                     return false;

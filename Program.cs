@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using System.IO;
-using System.Globalization;
-using CsvHelper;
-using BankrollBuddy;
 
 namespace BankrollBuddy
 {
@@ -54,8 +50,7 @@ namespace BankrollBuddy
             Console.WriteLine("\r\nTrack your poker sessions with Bankroll Buddy!");
             Console.WriteLine("\r\nChoose an option:");
             Console.WriteLine("1) Enter a session");
-            Console.WriteLine("2) Recommended stake based on bankroll");
-            //current bankroll / 100 = SB & / 200 = BB
+            Console.WriteLine("2) Bankroll breakdown");
             Console.WriteLine("3) Exit");
             Console.Write("\r\nSelect an option: ");
 
@@ -65,7 +60,7 @@ namespace BankrollBuddy
                     SessionInfo.GetSession();
                     return true;
                 case "2":
-                    //RecommendedStake();
+                    SessionInfo.Bankroll();
                     return true;
                 case "3":
                     return false;

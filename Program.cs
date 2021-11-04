@@ -46,7 +46,6 @@ namespace BankrollBuddy
 
         public static bool MainMenu()
         {
-            //Console.WriteLine($"\r\nWelcome to Bankroll Buddy, {Profile.firstName}. Your bankroll is set to ${Profile.bankroll}");
             Console.WriteLine("\r\nTrack your poker sessions with Bankroll Buddy!");
             Console.WriteLine("\r\nChoose an option:");
             Console.WriteLine("1) Enter a session");

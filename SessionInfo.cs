@@ -18,40 +18,69 @@ namespace BankrollBuddy
 
         public static void GetSession()
         {
+            // Get location of game
             Console.Write("\r\nWhere did you play? ");
             location = Console.ReadLine();
+
+            // Get the date played
             Console.Write("\r\nWhat date did you play (mm/dd/yyyy format)? ");
             date = Console.ReadLine();
             DateTime newDate;
             try
             {
-                newDate = DateTime.Parse(date);
+                newDate = DateTime.ParseExact(date, "MM/dd/yyyy", DateTimeFormatInfo.InvariantInfo);
             }
             catch (FormatException)
             {
-                Console.WriteLine("Valid date/format not entered.  Please try again.");
+                Console.WriteLine("Invalid entry.  Please try again.");
+                Program.MainMenu();
+                return;
+            }
+
+            // Get the initial buy-in amount
+            Console.Write("\r\nHow much did you buy in for? $");
+            double buyIn;
+            try
+            {
+                double.TryParse(Console.ReadLine(), out buyIn);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid entry.  Please try again.");
+                Program.MainMenu();
                 return;
             }
             
-            Console.Write("\r\nHow much did you buy in for? $");
-            double buyIn = Convert.ToDouble(Console.ReadLine());
+            // Get the cash out amount
             Console.Write("\r\nHow much did you cash out with? $");
-            double cashOut = Convert.ToDouble(Console.ReadLine());
+            double cashOut;
+            try
+            {
+                double.TryParse(Console.ReadLine(), out cashOut);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid entry.  Please try again.");
+                Program.MainMenu();
+                return;
+            }
 
             var sessions = new List<Session>()
                 {
                     new Session() {Location = location, Date = date, BuyIn = buyIn, CashOut = cashOut, Profit = (cashOut-buyIn) },
                 };
 
-            bool fileExist = File.Exists("Sessions.csv");
+            bool fileExist = File.Exists(@"..\..\..\Sessions.csv");
             if (!fileExist)
             {
-                var csvPath = Path.Combine(Environment.CurrentDirectory, $"Sessions.csv");
-                using (var streamWriter = new StreamWriter(csvPath))
+                var csvPath = Path.Combine(Environment.CurrentDirectory, @"..\..\..\Sessions.csv");
                 {
-                    using (var csvWriter = new CsvWriter(streamWriter, CultureInfo.InvariantCulture))
+                    using (var streamWriter = new StreamWriter(csvPath))
                     {
-                        csvWriter.WriteRecords(sessions);
+                        using (var csvWriter = new CsvWriter(streamWriter, CultureInfo.InvariantCulture))
+                        {
+                            csvWriter.WriteRecords(sessions);
+                        }
                     }
                 }
             }
@@ -62,11 +91,15 @@ namespace BankrollBuddy
                     // Don't write the header again.
                     HasHeaderRecord = false,
                 };
-                using (var stream = File.Open("Sessions.csv", FileMode.Append))
-                using (var writer = new StreamWriter(stream))
-                using (var csv = new CsvWriter(writer, config))
+                using (var stream = File.Open(@"..\..\..\Sessions.csv", FileMode.Append))
                 {
-                    csv.WriteRecords(sessions);
+                    using (var writer = new StreamWriter(stream))
+                    {
+                        using (var csv = new CsvWriter(writer, config))
+                        {
+                            csv.WriteRecords(sessions);
+                        }
+                    }
                 }
             }
 
@@ -85,17 +118,19 @@ namespace BankrollBuddy
 
         public static void Bankroll()
         {
-            using (var reader = new StreamReader("Sessions.csv"))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            using (var reader = new StreamReader(@"..\..\..\Sessions.csv"))
             {
-                var sessions = csv.GetRecords<Session>();
-                double buyIns = sessions.Sum(s => s.BuyIn); 
-                double profits = sessions.Sum(s => s.Profit);
-                double total =  profits + buyIns;
-                Console.WriteLine($"\r\nYour total buy-ins are ${buyIns}");
-                Console.WriteLine($"\r\nYour total profit is ${profits}");
-                Console.WriteLine($"\r\nYour current bankroll is ${total}");
-                Program.MainMenu();
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    var sessions = csv.GetRecords<Session>().ToList();
+                    double buyIns = sessions.Sum(s => s.BuyIn);
+                    double profits = sessions.Sum(s => s.Profit);
+                    double total = profits + buyIns;
+                    Console.WriteLine($"\r\nYour total buy-ins are ${buyIns}");
+                    Console.WriteLine($"\r\nYour total profit is ${profits}");
+                    Console.WriteLine($"\r\nYour current bankroll is ${total}");
+                    Program.MainMenu();
+                }
             }
         }
     }

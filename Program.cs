@@ -50,7 +50,8 @@ namespace BankrollBuddy
             Console.WriteLine("\r\nChoose an option:");
             Console.WriteLine("1) Enter a session");
             Console.WriteLine("2) Bankroll breakdown");
-            Console.WriteLine("3) Exit");
+            Console.WriteLine("3) Recommended stake");
+            Console.WriteLine("4) Exit");
             Console.Write("\r\nSelect an option: ");
 
             switch (Console.ReadLine())
@@ -62,6 +63,9 @@ namespace BankrollBuddy
                     SessionInfo.Bankroll();
                     return true;
                 case "3":
+                    SessionInfo.Stakes();
+                    return true;
+                case "4":
                     return false;
                 default:
                     return true;

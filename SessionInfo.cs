@@ -133,6 +133,27 @@ namespace BankrollBuddy
                 }
             }
         }
+
+        public static void Stakes()
+        {
+            Console.WriteLine("How much do you plan to buy in with?");
+            double projBuy;
+            try
+            {
+                double.TryParse(Console.ReadLine(), out projBuy);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid entry.  Please try again.");
+                Program.MainMenu();
+                return;
+            }
+
+            double recMinStake = projBuy / 400;
+            double recMaxStake = projBuy / 200;
+            Console.WriteLine($"\r\nRecommended game is ${recMinStake:F2}/${recMaxStake:F2} or lower stakes");
+            Program.MainMenu();
+        }
     }
 
 }

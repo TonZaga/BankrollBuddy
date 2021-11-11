@@ -1,7 +1,7 @@
 # BankrollBuddy
 
-Bankroll Buddy is a c# project that takes your poker sessions, writes them to a csv file, and can output profits and current bankroll.
-Plans to add features for a graph output, margin between sessions, recommended stakes for current bankroll, adding/removing sessions, etc.
+Bankroll Buddy is a c# project that takes your poker sessions, writes them to a csv file, can output profits/current bankroll, and recommend a stake based on buy in amount.
+Plans to add features for a graph output, margin between sessions, adding/removing sessions, etc.
 
 ## Nuget packages
 

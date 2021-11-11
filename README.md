@@ -22,17 +22,11 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## Project requirements/features
-- Switch menu 
-```
-Implement a ìmaster loopî console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program
-```
+- Switch menu
+Implement a ‚Äúmaster loop‚Äù console application where the user can repeatedly enter commands/perform actions, including choosing to exit the program
 
 - Read/Write to CSV 
-```
 Read data from an external file, such as text, JSON, CSV, etc and use that data in your application
-```
 
 - Calculate and display data from list
-```
 Use a LINQ query to retrieve information from a data structure (such as a list or array) or file
-```
